@@ -38,9 +38,10 @@ public class TaskService {
 
     }
 
-    public void dellTask(Long id) {
+    public boolean dellTask(Long id) {
         taskRepository.deleteById(id);
         log.info("Task {} has been successfully deleted", id);
+        return true;
     }
 
     public Task findTaskById(Long id) {
