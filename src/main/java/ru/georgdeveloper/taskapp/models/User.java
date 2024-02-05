@@ -8,15 +8,10 @@ import lombok.Data;
 @Data
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    @Column(name = "name")
-    private String name;
-    @Column(name= "age")
-    private int age;
-    @Column(name = "email")
-    private String email;
-    @Column(name = "password")
-    private String password;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "user_id")
+    private Long id;
 
+    @Column(name = "username")
+    private String username;
 }

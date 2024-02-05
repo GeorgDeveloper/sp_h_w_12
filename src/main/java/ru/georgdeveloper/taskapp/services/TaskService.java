@@ -5,10 +5,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ru.georgdeveloper.taskapp.enums.Status;
 import ru.georgdeveloper.taskapp.models.Task;
+import ru.georgdeveloper.taskapp.models.User;
 import ru.georgdeveloper.taskapp.repositpry.TaskRepository;
+import ru.georgdeveloper.taskapp.repositpry.UserRepository;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @Service
@@ -16,6 +20,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TaskService {
     private final TaskRepository taskRepository;
+    private final UserRepository userRepository;
 
     public boolean createTask(Task task) {
         if (taskRepository.findByNameTask(task.getNameTask()) != null) return false;
@@ -66,4 +71,24 @@ public class TaskService {
         log.info("Task {} has been successfully updated", task.getId());
         return true;
     }
+
+    public boolean assignExecutors(Long taskId, List<String> executorUsernames) {
+        Task task = taskRepository.findById(taskId).orElse(null);
+        if (task == null) return false;
+
+        Set<User> executors = new HashSet<>();
+        for (String username : executorUsernames) {
+            User executor = userRepository.findByUsername(username);
+            if (executor != null) {
+                executors.add(executor);
+            }
+        }
+
+        task.setExecutors(executors);
+        taskRepository.save(task);
+        log.info("Executors assigned to task {}", taskId);
+        return true;
+    }
+
+
 }

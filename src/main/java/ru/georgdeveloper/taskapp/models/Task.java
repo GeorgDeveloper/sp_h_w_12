@@ -26,6 +26,11 @@ public class Task {
     private Set<Status> status = new HashSet<>();
     @Column(name = "dateOfCreated")
     private LocalDateTime dateOfCreated;
-
-
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "task_executors",
+            joinColumns = @JoinColumn(name = "task_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private Set<User> executors = new HashSet<>();
 }
