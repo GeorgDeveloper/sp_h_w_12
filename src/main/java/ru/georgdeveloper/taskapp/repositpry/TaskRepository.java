@@ -11,5 +11,5 @@ import java.util.Set;
 public interface TaskRepository extends JpaRepository<Task,Long> {
     Task findByNameTask(String name);
     List<Task> findTaskByStatus(Status status);
-    List<Task> findByExecutors(User executor);
+    List<Task> findTaskByExecutors(User userByPrincipal);
 }
