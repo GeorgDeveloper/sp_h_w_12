@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import ru.georgdeveloper.taskapp.anatation.TrackUserAction;
 import ru.georgdeveloper.taskapp.models.User;
 import ru.georgdeveloper.taskapp.repositpry.UserRepository;
 
@@ -18,6 +19,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
+    @TrackUserAction
     public boolean createUser(User user) {
         String userEmail = user.getEmail();
         if (userRepository.findByEmail(userEmail) != null) return false;
@@ -30,6 +32,7 @@ public class UserService {
     }
 
 
+    @TrackUserAction
     public List<User> findAll() {
         return userRepository.findAll();
     }
