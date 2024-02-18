@@ -5,6 +5,9 @@
 </head>
 <body>
 <h1>МОИ ЗАДАЧИ</h1>
+<form action="/logout" method="post">
+    <input type="submit" value="Выйти из аккаунта">
+</form>
 <hr>
 <#if userIsActiveRole>
     <h3>Создать новую задачу</h3>

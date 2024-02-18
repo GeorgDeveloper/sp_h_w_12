@@ -1,7 +1,10 @@
 package ru.georgdeveloper.taskapp.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import ru.georgdeveloper.taskapp.enums.Role;
@@ -13,7 +16,7 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 @Data
-public class User implements UserDetails{
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -43,6 +46,7 @@ public class User implements UserDetails{
     public String getUsername() {
         return email;
     }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;

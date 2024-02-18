@@ -43,7 +43,7 @@ public class SecurityConfig {
                                 .requestMatchers("/task_table/change/**").hasRole("ADMIN")
                                 .requestMatchers("task_table/find/**").hasRole("ADMIN")
                                 .requestMatchers("update/**").hasRole("ADMIN")
-                                .anyRequest().authenticated());
+                                .anyRequest().authenticated()).logout(login -> login.permitAll());
         return http.build();
     }
 

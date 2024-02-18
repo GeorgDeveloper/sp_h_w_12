@@ -32,6 +32,10 @@ public class UserController {
         return "login";
     }
 
+    @GetMapping("/logout")
+    public String logout() {
+        return "login";
+    }
 
     @GetMapping("/registration")
     public String registration() {
