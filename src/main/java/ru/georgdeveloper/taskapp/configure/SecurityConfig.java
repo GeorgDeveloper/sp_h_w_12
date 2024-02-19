@@ -33,6 +33,7 @@ public class SecurityConfig {
                         authorizationManagerRequestMatcherRegistry
                                 .requestMatchers("/registration/**").permitAll()
                                 .requestMatchers("/login/**").permitAll()
+                                .requestMatchers("/actuator/**").permitAll()
                                 .requestMatchers("/admin/**").hasRole("ADMIN")
                                 .requestMatchers("/user/**").authenticated()
                                 .requestMatchers("/index/**").authenticated()

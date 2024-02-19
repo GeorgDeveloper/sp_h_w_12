@@ -1,4 +1,4 @@
-package ru.georgdeveloper.taskapp.anatation;
+package ru.georgdeveloper.taskapp.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
