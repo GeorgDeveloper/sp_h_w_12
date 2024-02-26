@@ -20,6 +20,7 @@ public class UserActionLoggingAspect {
 
     @AfterReturning(pointcut = "trackUserAction()", returning = "result")
     public void logUserAction(JoinPoint joinPoint, Object result) {
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
         String methodName = joinPoint.getSignature().getName();

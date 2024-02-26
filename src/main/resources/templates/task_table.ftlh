@@ -19,21 +19,21 @@
         <th>Изменить</th>
         <th>Удалить</th>
     </tr>
-    <#list tasks as task>
+    <#list tasks as regularTask>
         <tr>
-            <th>${task.id}</th>
-            <th>${task.nameTask}</th>
-            <th>${task.taskBody}</th>
-            <th> <#list task.status as status>${status}</#list></th>
-            <th> <#list task.executors as user>${user.email}</#list></th>
-            <th> ${task.getDateOfCreated()}</th>
+            <th>${regularTask.id}</th>
+            <th>${regularTask.nameTask}</th>
+            <th>${regularTask.taskBody}</th>
+            <th> <#list regularTask.status as status>${status}</#list></th>
+            <th> <#list regularTask.executors as user>${user.email}</#list></th>
+            <th> ${regularTask.getDateOfCreated()}</th>
             <th>
-                <form action="task_table/change/${task.id}" method="post">
+                <form action="task_table/change/${regularTask.id}" method="post">
                     <input type="submit" value="Изменить">
                 </form>
             </th>
             <th>
-                <form action="task_table/delete/${task.id}" method="post">
+                <form action="task_table/delete/${regularTask.id}" method="post">
                     <input type="submit" value="Удалить">
                 </form>
             </th>

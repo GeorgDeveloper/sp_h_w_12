@@ -14,16 +14,16 @@
         <th>Дата</th>
     </tr>
         <tr>
-            <th>${task.id}</th>
-            <th>${task.nameTask}</th>
-            <th>${task.taskBody}</th>
-            <th> <#list task.status as status>${status}</#list></th>
-            <th> <#list task.executors as user>${user.email}</#list></th>
-            <th> ${task.getDateOfCreated()}</th>
+            <th>${regularTask.id}</th>
+            <th>${regularTask.nameTask}</th>
+            <th>${regularTask.taskBody}</th>
+            <th> <#list regularTask.status as status>${status}</#list></th>
+            <th> <#list regularTask.executors as user>${user.email}</#list></th>
+            <th> ${regularTask.getDateOfCreated()}</th>
         </tr>
 </table>
 <br>
-<form action="/update/${task.id}" method="post">
+<form action="/update/${regularTask.id}" method="post">
     Имя задачи: <input type="text" name="nameTask"><br><br>
     Задача: <input type="text" name="taskBody"><br><br>
     Статус:

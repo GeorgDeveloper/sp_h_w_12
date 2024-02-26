@@ -12,13 +12,9 @@ import ru.georgdeveloper.taskapp.services.UserService;
 
 /**
  * @login - форма авторизации пользователя
- *
  * @registration - форма регистрации пользователя
- *
  * @createUser - создание пользователя
- *
  * @userInfo - информация о пользователе
- *
  */
 
 @Controller
@@ -45,17 +41,22 @@ public class UserController {
 
     @PostMapping("/registration")
     public String createUser(User user, Model model) {
+
         if (!userService.createUser(user)) {
             model.addAttribute("errorMessage", "Пользователь с email: " + user.getEmail() + " уже существует");
+
             return "registration";
         }
+
         return "redirect:/login";
     }
 
     @GetMapping("/user/{user}")
     public String userInfo(@PathVariable("user") User user, Model model) {
+
         model.addAttribute("user", user);
         model.addAttribute("tasks", taskService.findTaskByUser(user));
+
         return "user-info";
     }
 

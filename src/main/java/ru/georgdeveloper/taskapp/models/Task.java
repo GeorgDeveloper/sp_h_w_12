@@ -1,36 +1,28 @@
 package ru.georgdeveloper.taskapp.models;
 
-import jakarta.persistence.*;
-import lombok.Data;
 import ru.georgdeveloper.taskapp.enums.Status;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Collection;
 
-@Entity
-@Table(name = "tasks")
-@Data
-public class Task {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Long id;
-    @Column(name = "name_task")
-    private String nameTask;
-    @Column(name = "task_body", length = 1000)
-    private String taskBody;
-    @ElementCollection(targetClass = Status.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "task_status", joinColumns = @JoinColumn(name = "task_id"))
-    @Enumerated(EnumType.STRING)
-    private Set<Status> status = new HashSet<>();
-    @Column(name = "dateOfCreated")
-    private LocalDateTime dateOfCreated;
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "task_executors",
-            joinColumns = @JoinColumn(name = "task_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
-    )
-    private Set<User> executors = new HashSet<>();
+
+public interface Task {
+    void setNameTask(String nameTask);
+
+    void setTaskBody(String taskBody);
+
+    Collection<Status> getStatus();
+
+
+    Collection<User> getExecutors();
+
+    void setDateOfCreated(LocalDateTime now);
+
+    Long getId();
+
+    String getNameTask();
+
+    String getTaskBody();
+
+    void setStatus(Collection<Status> status);
 }

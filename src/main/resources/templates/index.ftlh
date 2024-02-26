@@ -15,6 +15,7 @@
         <p>
             Имя задачи: <input type="text" name="nameTask"><br><br>
             Задача: <input type="text" name="taskBody"><br><br>
+            Приоритет: <input type="text" name="status"><br><br>
         </p>
         <p>
             Назначить исполнителя:
@@ -44,14 +45,14 @@
             <th>Исполнитель</th>
             <th>Дата</th>
         </tr>
-        <#list tasks as task>
+        <#list tasks as regularTask>
             <tr>
-                <th>${task.id}</th>
-                <th>${task.nameTask}</th>
-                <th>${task.taskBody}</th>
-                <th> <#list task.status as status>${status}</#list></th>
-                <th> <#list task.executors as user>${user.email}</#list></th>
-                <th> ${task.getDateOfCreated()}</th>
+                <th>${regularTask.id}</th>
+                <th>${regularTask.nameTask}</th>
+                <th>${regularTask.taskBody}</th>
+                <th> <#list regularTask.status as status>${status}</#list></th>
+                <th> <#list regularTask.executors as user>${user.email}</#list></th>
+                <th> ${regularTask.getDateOfCreated()}</th>
             </tr>
         <#else>
             <h3>Таких задач нет</h3>
@@ -68,24 +69,24 @@
                 <th>Исполнитель</th>
                 <th>Дата</th>
             </tr>
-            <#list tasksUser as task>
+            <#list tasksUser as regularTask>
                 <#if userIsActiveRole>
                     <tr>
-                        <th>${task.id}</th>
-                        <th>${task.nameTask}</th>
-                        <th>${task.taskBody}</th>
-                        <th> <#list task.status as status>${status}</#list></th>
-                        <th> <#list task.executors as user>${user.email}</#list></th>
-                        <th> ${task.getDateOfCreated()}</th>
+                        <th>${regularTask.id}</th>
+                        <th>${regularTask.nameTask}</th>
+                        <th>${regularTask.taskBody}</th>
+                        <th> <#list regularTask.status as status>${status}</#list></th>
+                        <th> <#list regularTask.executors as user>${user.email}</#list></th>
+                        <th> ${regularTask.getDateOfCreated()}</th>
                     </tr>
                 <#else>
                     <tr>
-                        <th>${task.id}</th>
-                        <th>${task.nameTask}</th>
-                        <th>${task.taskBody}</th>
-                        <th> <#list task.status as status>${status}</#list></th>
-                        <th> <#list task.executors as user>${user.email}</#list></th>
-                        <th> ${task.getDateOfCreated()}</th>
+                        <th>${regularTask.id}</th>
+                        <th>${regularTask.nameTask}</th>
+                        <th>${regularTask.taskBody}</th>
+                        <th> <#list regularTask.status as status>${status}</#list></th>
+                        <th> <#list regularTask.executors as user>${user.email}</#list></th>
+                        <th> ${regularTask.getDateOfCreated()}</th>
                     </tr>
                 </#if>
             <#else>
